@@ -1,0 +1,38 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Hello BurgerController!
+{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+	<div class="container-form mt-5 d-flex"style="width: 30rem;">
+		<div class="card text-left">
+			<img class="card-img-top" src="holder.js/100px180/" alt="">
+			<div class="card-body">
+				<h4 class="card-title">Title</h4>
+				{{form_start(form)}}
+				<div class="form-group">
+					<label for="exampleInputEmail1">Nom Burger</label>
+					{{form_widget(form.nom)}}
+					<small id="emailHelp" class="form-text text-danger">{{form_errors(form.nom)}}</small>
+				</div>
+                <div class="form-group">
+					<label for="exampleInputEmail1">Prix Burger</label>
+					{{form_widget(form.prix)}}
+					<small id="emailHelp" class="form-text text-danger">{{form_errors(form.prix)}}</small>
+				</div>
+                <div class="form-group">
+					<label for="exampleInputEmail1">Image Burger</label>
+					{{form_widget(form.image)}}
+					<small id="emailHelp" class="form-text text-danger"></small>
+				</div>
+					{{form_widget(form.valider)}}
+
+				{{form_end(form)}}
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogueController!{% endblock %}
+
+{% block body %}
+
+
+   
+        <div class="burger-container row">
+        {% for burger in burgers %}
+            {% for image in burger.images %}
+                <div class="burger-item col-md-3">
+                    <img src="{{image.nom}}" alt="Burger">
+                    <h2 class="center color-primary burger-heading">{{burger.nom}}</h2>
+                    <p>prix: {{burger.prix}} </p>
+                    <p>Lorem Ipsum has been the industry's standard dummy 
+                text ever since the 1500s, when an unknown printer took </p>
+                <a href="{{path('app_detail_burger',{'id':burger.id})}}" class="order-btn"></a>
+                </div>
+            {% endfor %}
+            {% endfor %}
+             </div>
+           
+{% endblock %}

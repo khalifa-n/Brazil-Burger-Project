@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GestionnaireController!{% endblock %}
+
+{% block body %}
+    <div class="bg-light p-3">
+       <h1>votre panier  </h1>
+     </div>
+     {% if items | length > 0 %}
+     <table class="table"> 
+        <thead>
+            <tr>
+                <th>produit  </th>
+                <th> prix </th>
+                <th>quantite  </th>
+                <th>total  </th>
+                <th>  </th>
+            <tr>
+        <thead>
+        <tbody>
+        {% for item in items %}
+             <tr>
+             <td>{{item.burger.nom}}</td>
+             <td>{{item.burger.prix}}</td>
+             <td>{{item.quantity}}</td>
+             <td>{{item.burger.prix *item.quantity  }}</td>
+             <td>
+                <a href="{{path('app_remove_panier',{'id':item.burger.id})}}" class="text-danger">delete</a>
+             </td>
+
+
+
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+        <td colspan="3" class="text-right"> </td>
+        <td>{{total}} </td>
+        <td> </td>
+        <td> </td>
+
+
+         </tr>
+
+        </tfoot>
+
+
+
+    </table>
+
+     {% else %}
+         
+     <p>surprise c'est vide</p>
+     {% endif %}
+     
+{% endblock %}

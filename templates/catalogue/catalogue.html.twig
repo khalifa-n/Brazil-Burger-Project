@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogueController!{% endblock %}
+
+{% block body %}
+{{ parent() }}
+<section class="center-div" id="food">
+        <h2 class="h-secondary center btn-heading">ALWAYS TESTY BURGERS</h2>
+        <h1 class="center color-primary center-heading">CHOOSE & ENJOY</h1>
+              
+        <div class="burger-container row">
+        {% for burger in burgers %}
+            {% for image in burger.images %}
+                <div class="burger-item col-md-3">
+                    <img src="{{'/uploads/'  ~  image.nom}}" alt="">
+                    <h2 class="center color-primary burger-heading">{{burger.nom}}</h2>
+                <div class="d-flex">
+                <a href="{{path('app_detail_burger',{'id':burger.id})}}" class="order-btn">Detail</a>
+                <a href="{{path('app_add_panier',{'id':burger.id})}}" class="order-btn">commander</a>
+                  </div>
+                </div>
+            {% endfor %}
+            {% endfor %}
+                            </div>
+
+    </section>
+    <section class="center-div" id="food">
+        <h2 class="h-secondary center btn-heading">ALWAYS TESTY BURGERS</h2>
+        <h1 class="center color-primary center-heading">CHOOSE & ENJOY</h1>
+              
+        <div class="burger-container row">
+        {% for complement in complements %}
+            {% for image in complement.images %}
+                <div class="burger-item col-md-3">
+                    <img src="{{'/uploads/'  ~  image.nom}}" alt="">
+                    <h2 class="center color-primary burger-heading">{{complement.nom}}</h2>
+                <div class="d-flex">
+                  </div>
+                </div>
+            {% endfor %}
+            {% endfor %}
+                            </div>
+
+    </section>
+    {% endblock %}
