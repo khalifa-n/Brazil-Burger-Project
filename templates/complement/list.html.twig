@@ -1,0 +1,40 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Hello BurgerController!{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="d-flex justify-content-center">
+<table class="table mt-5  "style="width: 50rem;">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Archiver</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+     {% for complement in complements %}
+                 {% for image in complement.images %}
+    <tr>
+      <td><img src="{{'/uploads/'  ~  image.nom}}"width="50" alt=""></td> 
+      <td>{{complement.nom}}</td> 
+      <td>{{complement.prix}}</td> 
+      <td><a href="{{path('edit_burger',{'id':complement.id})}}">test </a></td>
+      <td><a href="">test </a></td>
+ 
+
+    </tr>
+
+           {% endfor %}
+   
+       {% endfor %}
+
+  </tbody>
+</table>
+</div>
+{% endblock %}

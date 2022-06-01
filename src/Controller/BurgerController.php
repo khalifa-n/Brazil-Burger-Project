@@ -30,11 +30,13 @@ class BurgerController extends AbstractController
             'burgers'=>$burgers
         ]);
     }
-
+    #[Route('/edit/{id}', name: 'edit_burger')]
     #[Route('/add', name: 'add_burger')]
-    public function addBurger(EntityManagerInterface $manager,Request $request): Response
+    public function addBurger(EntityManagerInterface $manager,Request $request ,Burger $burger): Response
     {
-        $burger = new Burger();
+        if (!$burger) {
+            $burger = new Burger();
+        }
         $form = $this->createForm(BurgerType::class,$burger);
         $form->handleRequest($request) ;
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,4 +62,6 @@ class BurgerController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+   
+
 }

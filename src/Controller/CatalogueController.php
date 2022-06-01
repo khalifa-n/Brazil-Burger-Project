@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CatalogueController extends AbstractController
 {
+   
     #[Route('/', name: 'app_catalogue')]
     public function index(ComplementRepository $complementRepository, BurgerRepository $burgerRepository,Request $request): Response
     {

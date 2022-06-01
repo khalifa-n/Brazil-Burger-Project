@@ -24,7 +24,7 @@ security:
             logout:
                 path: logout
                 # where to redirect after logout
-                target: app_catalogue
+                target: /
               # ...
             # remember_me:
             #     secret:   '%kernel.secret%' # required

@@ -3,9 +3,45 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<div class="wrapper">
+			<div class="inner">
+				<form action=""method="post">
+					<h3>Brazil Burger</h3>
+                    <label class="form-group-f">
+						<input type="email" class="form-control-f"  autocomplete="email" required autofocus>
+						<span>Entrer Votre Mail</span>
+						<span class="border"></span>
+					</label>
+                    <label class="form-group-f">
+						<input type="email" class="form-control-f"  autocomplete="email" required autofocus>
+						<span>Entrer Votre Mail</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group-f">
+						<input type="email" class="form-control-f" autocomplete="email" required autofocus>
+						<span>Entrer Votre Mail</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group-f">
+						<input type="password" class="form-control-f" autocomplete="current-password"  required>
+						<span for="">Entrer Votre Password</span>
+						<span class="border"></span>
+					</label>
+                    <input type="hidden" name="_csrf_token"
+		            value="{{ csrf_token('authenticate') }}">
+					<button>Submit 
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+ 
+ 
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.nom) }}
+         {{ form_row(registrationForm.prenom) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'

@@ -14,6 +14,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ComplementController extends AbstractController
 {
+    private $em;
+   
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em=$em;
+    }
+    #[Route('/list_complement', name: 'list_complement')]
+   
+    public function list(): Response
+    {
+        $repository = $this->em->getRepository(Complement::class);
+        $complements=  $repository->findBy(['etat'=>'non-archiver']);
+
+
+        return $this->render('complement/list.html.twig', [
+            'controller_name' => 'ComplementConétroller',
+            'complements'=> $complements,
+        ]);
+    }
     #[Route('/complement', name: 'app_complement')]
     public function add(EntityManagerInterface $entityManagerInterface, Request $request ): Response
     {
