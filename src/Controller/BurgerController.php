@@ -17,8 +17,8 @@ class BurgerController extends AbstractController
     public function __construct(EntityManagerInterface $em)
     {
         $this->em=$em;
+        
     }
-
     
     #[Route('/burger', name: 'list_burger')]
     public function list(): Response
@@ -30,13 +30,41 @@ class BurgerController extends AbstractController
             'burgers'=>$burgers
         ]);
     }
-    #[Route('/edit/{id}', name: 'edit_burger')]
-    #[Route('/add', name: 'add_burger')]
-    public function addBurger(EntityManagerInterface $manager,Request $request ,Burger $burger): Response
+     #[Route('/edit/{id}', name: 'edit_burger')]
+    public function editBurger(Request $request)
     {
-        if (!$burger) {
-            $burger = new Burger();
+        $burger=new Burger();
+        $form = $this->createForm(BurgerType::class,$burger);
+        $form ->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $images = $form->get('image')->getData();
+
+            foreach($images as $image){
+                $fichier=md5(uniqid()). '.' .$image->guessExtension();
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                $img = new Image();
+                $img->setNom($fichier);
+                $burger->addImage($img);
+            }
+            $burger = $form -> getData();
+            $this-> em->persist($burger);
+            $this-> em->flush();
+            return $this->redirectToRoute('app_catalogue');
         }
+        return $this->render('burger/add.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+    }
+    #[Route('/add', name: 'add_burger',methods:['GET','POST'])]
+    public function addBurger(Request $request): Response
+    {
+        //dd($request);
+       
+        $burger = new Burger();
         $form = $this->createForm(BurgerType::class,$burger);
         $form->handleRequest($request) ;
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,8 +81,9 @@ class BurgerController extends AbstractController
                 
             }
             $burger=$form ->getData();
-            $manager->persist($burger);
-            $manager->flush();
+           $this-> em->persist($burger);
+           $this-> em->flush();
+           $this-> addFlash('success','votre produit a été ajouté avec succés');
 
             return $this->redirectToRoute('app_catalogue');
         }

@@ -10,7 +10,7 @@
         {% for burger in burgers %}
             {% for image in burger.images %}
                 <div class="burger-item col-md-3">
-                    <img src="{{image.nom}}" alt="Burger">
+                    <img src="/uploads/{{image.nom}}" alt="Burger">
                     <h2 class="center color-primary burger-heading">{{burger.nom}}</h2>
                     <p>prix: {{burger.prix}} </p>
                     <p>Lorem Ipsum has been the industry's standard dummy 

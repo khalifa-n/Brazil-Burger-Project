@@ -3,41 +3,42 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+    {{ form_start(registrationForm) }}
+
 <div class="wrapper">
 			<div class="inner">
-				<form action=""method="post">
+        {{ form_start(registrationForm) }}
 					<h3>Brazil Burger</h3>
-                    <label class="form-group-f">
-						<input type="email" class="form-control-f"  autocomplete="email" required autofocus>
-						<span>Entrer Votre Mail</span>
+                        <label class="form-group-f">
+                            {{ form_widget(registrationForm.nom)}}
+						<span>Entrer Votre Nom</span>
 						<span class="border"></span>
 					</label>
                     <label class="form-group-f">
-						<input type="email" class="form-control-f"  autocomplete="email" required autofocus>
+                        {{ form_widget(registrationForm.prenom) }}						
+                    <span>Entrer Votre prenom</span>
+					<span class="border"></span>
+					</label>
+					<label class="form-group-f">
+                            {{ form_widget(registrationForm.email) }}
 						<span>Entrer Votre Mail</span>
 						<span class="border"></span>
 					</label>
 					<label class="form-group-f">
-						<input type="email" class="form-control-f" autocomplete="email" required autofocus>
-						<span>Entrer Votre Mail</span>
+                        {{ form_widget(registrationForm.plainPassword) }}						
+                        <span for="">Entrer Votre Password</span>
 						<span class="border"></span>
 					</label>
-					<label class="form-group-f">
-						<input type="password" class="form-control-f" autocomplete="current-password"  required>
-						<span for="">Entrer Votre Password</span>
-						<span class="border"></span>
-					</label>
-                    <input type="hidden" name="_csrf_token"
-		            value="{{ csrf_token('authenticate') }}">
+                   
 					<button>Submit 
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
-				</form>
+        {{ form_end(registrationForm) }} 
 			</div>
 		</div>
  
  
-    <h1>Register</h1>
+     {# <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.nom) }}
@@ -49,5 +50,5 @@
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    {{ form_end(registrationForm) }}  #}
 {% endblock %}

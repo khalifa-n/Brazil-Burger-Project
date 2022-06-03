@@ -5,6 +5,11 @@
 {% block body %}
 {{parent()}}
 <div class="d-flex justify-content-center">
+    {% for message in app.flashes('success')  %}
+        <div class="alert alert-success">
+            {{message}}
+        </div>
+    {% endfor %}
 <table class="table mt-5  "style="width: 50rem;">
   <thead>
     <tr>
