@@ -3,6 +3,39 @@
 {% block title %}Hello GestionnaireController!{% endblock %}
 
 {% block body %}
+			<section id="navbar">
+				<div class="logo">
+					<img src="Images/logo.png" alt="">
+				</div>
+				<ul id="list">
+					<li>
+						<a href="{{path('app_catalogue')}}" class="para-font">Home</a>
+					</li>
+					<li>
+						<a href="#main" class="para-font">Menu</a>
+					</li>
+					<li>
+						<a href="#food" class="para-font">Burger</a>
+					</li>
+					{% if app.user %}
+						<li>
+							<a href="{{path('logout')}}" class="para-font">Se deconnecter</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="{{path('login')}}" class="para-font">Se connecter</a>
+						</li>
+					{% endif %}
+					<li>
+						<a href="{{path('app_panier')}}" class="para-font">
+							<i class="fa-solid fa-cart-shopping"></i>Panier</a>
+					</li>
+
+				</ul>
+				<div class="menu" onclick="myFunction()">
+					<div class="one" id="menu"></div>
+				</div>
+			</section>
     <div class="bg-light p-3">
        <h1>votre panier  </h1>
      </div>

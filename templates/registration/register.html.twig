@@ -7,30 +7,24 @@
 
 <div class="wrapper">
 			<div class="inner">
-        {{ form_start(registrationForm) }}
 					<h3>Brazil Burger</h3>
                         <label class="form-group-f">
                             {{ form_widget(registrationForm.nom)}}
 						<span>Entrer Votre Nom</span>
-						<span class="border"></span>
 					</label>
                     <label class="form-group-f">
                         {{ form_widget(registrationForm.prenom) }}						
                     <span>Entrer Votre prenom</span>
-					<span class="border"></span>
 					</label>
 					<label class="form-group-f">
                             {{ form_widget(registrationForm.email) }}
 						<span>Entrer Votre Mail</span>
-						<span class="border"></span>
 					</label>
 					<label class="form-group-f">
                         {{ form_widget(registrationForm.plainPassword) }}						
                         <span for="">Entrer Votre Password</span>
-						<span class="border"></span>
 					</label>
-                   
-					<button>Submit 
+					<button type="submit">Submit 
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
         {{ form_end(registrationForm) }} 
@@ -51,4 +45,4 @@
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}  #}
-{% endblock %}
+{% endblock body %}

@@ -16,7 +16,7 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $roles=["ROLE_GESTIONNAIRE"];
+        $roles=["ROLE_CLIENT"];
        
          $plainPassword = 'passer@123';
         for ($i = 1; $i <=2; $i++) {

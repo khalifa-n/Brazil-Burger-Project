@@ -62,7 +62,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
             $redirection = new RedirectResponse($this->urlGenerator->generate('app_catalogue'));
         } elseif(in_array('ROLE_GESTIONNAIRE', $rolesTab, true)) {
             // c'est un utilisaeur gestionnaire : on le rediriger vers l'espace admin
-            $redirection = new RedirectResponse($this->urlGenerator->generate('login'));
+            $redirection = new RedirectResponse($this->urlGenerator->generate('app_admin'));
         }
         // For example:
         return $redirection;

@@ -5,22 +5,22 @@
 {% block body %}
    <div class="wrapper">
 			<div class="inner">
-				<form action=""method="post">
+				<form method="post">
 					<h3>Brazil Burger</h3>
                     
 					<label class="form-group-f">
-						<input type="email" class="form-control-f" value="{{ last_username }}" autocomplete="email" required autofocus>
+						<input type="email" name="email" class="form-control-f" value="{{ last_username }}" autocomplete="email" required autofocus>
 						<span>Entrer Votre Mail</span>
 						<span class="border"></span>
 					</label>
 					<label class="form-group-f">
-						<input type="password" class="form-control-f" autocomplete="current-password"  required>
+						<input type="password" name="password" class="form-control-f" autocomplete="current-password"  required>
 						<span for="">Entrer Votre Password</span>
 						<span class="border"></span>
 					</label>
                     <input type="hidden" name="_csrf_token"
 		            value="{{ csrf_token('authenticate') }}">
-					<button type="submit">Submit 
+					<button type="submit" name="connect" >Submit 
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
 				</form>

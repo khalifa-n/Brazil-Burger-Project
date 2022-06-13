@@ -35,7 +35,7 @@ class GestionnaireController extends AbstractController
         // if ($method=='POST') {
         //     $commande->setDate(new\date);
         // }
-        return $this->render('gestionnaire/index.html.twig', [
+        return $this->render('gestionnaire/panier.html.twig', [
             'items' => $panierwithdata,
             'total' =>$total,
         ]);

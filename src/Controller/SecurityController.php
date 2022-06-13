@@ -9,12 +9,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route(path: '/login', name: 'login')]
+    #[Route('/login', name:'login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
          if ($this->getUser()) {
               foreach ($this->getUser()->getRoles() as $role) {
                   if ($role == 'ROLE_CLIENT') {
+                      //dd('true');
                     return $this->redirectToRoute('app_catalogue');
                  }
               }

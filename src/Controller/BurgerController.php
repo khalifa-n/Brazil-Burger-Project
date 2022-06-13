@@ -30,10 +30,18 @@ class BurgerController extends AbstractController
             'burgers'=>$burgers
         ]);
     }
-     #[Route('/edit/{id}', name: 'edit_burger')]
-    public function editBurger(Request $request)
+    #[Route('/archive/{id}', name: 'archive_burger')]
+    public function archiveBurger( Burger $burger)
     {
-        $burger=new Burger();
+        $burger->setEtat('archiver');
+        $this->em->flush();
+           
+        return $this->redirectToRoute('list_burger');
+
+    }
+     #[Route('/edit/{id}', name: 'edit_burger')]
+    public function editBurger(Request $request , Burger $burger)
+    {
         $form = $this->createForm(BurgerType::class,$burger);
         $form ->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

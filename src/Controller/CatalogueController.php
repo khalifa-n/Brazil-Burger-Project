@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Burger;
 use App\Repository\BurgerRepository;
 use App\Repository\ComplementRepository;
-use Symfony\Component\HttpFoundation\Request;
+use App\Repository\MenuRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,14 +14,18 @@ class CatalogueController extends AbstractController
 {
    
     #[Route('/', name: 'app_catalogue')]
-    public function index(ComplementRepository $complementRepository, BurgerRepository $burgerRepository,Request $request): Response
+    public function index(ComplementRepository $complementRepository, BurgerRepository $burgerRepository,MenuRepository $menuRepository): Response
     {
         $burgers=$burgerRepository->findBy(['etat'=>'non-archiver']);
         $complements = $complementRepository->findAll();
+        $menus = $menuRepository->findBy(['etat'=>'non-archiver']);
+        //dd($burgers);   
         return $this->render('catalogue/catalogue.html.twig', [
             'controller_name' => 'CatalogueController',
             'burgers'=>$burgers,
             'complements'=>$complements,
+            'menus'=>$menus,
+        
 
         ]);
     } 

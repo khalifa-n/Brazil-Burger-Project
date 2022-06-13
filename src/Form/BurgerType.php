@@ -18,20 +18,18 @@ class BurgerType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class,[
-                'label' => 'Nom Burger',
                 'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Entrer le nom'
+                    'class' => 'form-control-f',
+                    // 'placeholder' => 'Entrer le nom'
                 ],
                 'constraints' => [
                     new NotBlank(message:'veillez remplir ce champs')
                 ]
             ])
             ->add('prix',NumberType::class,[
-                'label' => 'Prix Burger',
                 'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Entrer le prix'
+                    'class' => 'form-control-f',
+                    //'placeholder' => 'Entrer le prix'
                 ],
                 'constraints' => [
                     new NotBlank(message:'veillez remplir ce champs')
@@ -39,22 +37,14 @@ class BurgerType extends AbstractType
             ])
             ->add('image',FileType::class,[
                 'attr'=>[
-                    'class'=>'mt-4'
+                    'class'=>'form-control-f border-0'
                 ],
                 'label'=>false,
                 'multiple'=>true,
                 'mapped'=>false,
                 'required'=>false,
             ])
-            
-
-
-
-            ->add('valider',SubmitType::class,[
-                'attr' => [
-                    'class' => 'btn btn-primary float-end',
-                ],
-            ])
+          
         ;
     }
 

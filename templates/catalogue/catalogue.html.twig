@@ -9,6 +9,7 @@
         <h1 class="center color-primary center-heading">CHOOSE & ENJOY</h1>
               
         <div class="burger-container row">
+        
         {% for burger in burgers %}
             {% for image in burger.images %}
                 <div class="burger-item col-md-3">
@@ -40,6 +41,18 @@
             {% endfor %}
             {% endfor %}
                             </div>
-
+        <h1 class="center color-primary center-heading">CHOOSE & ENJOY</h1>
+<div class="burger-container row">
+        {% for menu in  menus %}
+            {% for image in  menu.images %}
+                <div class="burger-item col-md-3">
+                    <img src="{{'/uploads/'  ~  image.nom}}" alt="">
+                    <h2 class="center color-primary burger-heading">{{menu.nom}}</h2>
+                <div class="d-flex">
+                  </div>
+                </div>
+            {% endfor %}
+            {% endfor %}
+                            </div>
     </section>
     {% endblock %}
